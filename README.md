@@ -38,7 +38,7 @@ Fanora 的核心理念：
 可以概括为：
 Web2 的简单体验 + AI 驱动的个性化创作 + Web3 带来的数字所有权与长期验证。
 
-[在线 Demo](https://fanora-orpin.vercel.app/) · [完整项目说明](docs/produce/README.md) · [系统架构](docs/produce/ARCHITECTURE.md) · [AI Agent 设计](docs/produce/AI_AGENT_DESIGN.md)
+[在线 Demo](https://fanora-orpin.vercel.app/) · [完整项目说明](docs/produce/README.md) · [系统架构](docs/produce/architecture.md) · [AI Agent 设计](docs/produce/ai_agent_design.md)
 
 ![Fanora 项目首页](docs/image.png)
 ![alt text](docs/image2.png)
@@ -112,10 +112,10 @@ npm run dev
 | 文档                                             | 适合谁       | 内容                                     |
 | ---------------------------------------------- | --------- | -------------------------------------- |
 | [项目总览](docs/produce/README.md)                 | 评委、产品、开发者 | 问题、方案、MVP 路径、核心亮点与完成边界                 |
-| [功能树](docs/produce/FUNCTION_TREE.md)           | 评委、测试、产品  | 页面、功能、API 与角色边界                        |
-| [系统架构](docs/produce/ARCHITECTURE.md)           | 架构师、开发者   | 分层、数据事实源、关键时序、合约与故障边界                  |
-| [AI Agent 设计](docs/produce/AI_AGENT_DESIGN.md) | AI、后端开发者  | LangGraph State、Node、Tool、Prompt 与模型降级 |
-| [系统需求](docs/produce/SYSTEM_REQUIREMENTS.md)    | 产品、测试、评审  | MVP 范围、功能需求、非功能需求与验收标准                 |
+| [功能树](docs/produce/function_tree.md)           | 评委、测试、产品  | 页面、功能、API 与角色边界                        |
+| [系统架构](docs/produce/architecture.md)           | 架构师、开发者   | 分层、数据事实源、关键时序、合约与故障边界                  |
+| [AI Agent 设计](docs/produce/ai_agent_design.md) | AI、后端开发者  | LangGraph State、Node、Tool、Prompt 与模型降级 |
+| [系统需求](docs/produce/system.md)    | 产品、测试、评审  | MVP 范围、功能需求、非功能需求与验收标准                 |
 
 ## 项目结构
 
@@ -125,7 +125,7 @@ Fanora/
 ├── backend/           # FastAPI、LangGraph、业务服务与数据模型
 ├── contracts/         # Solidity、Hardhat、Monad 合约
 ├── shared/contracts/  # 前后端共享 ABI 与部署清单
-└── docs/produce/      # 黑客松项目文档
+└── docs/produce/      # 项目文档
 ```
 
 Fanora 的核心不是“再做一个 AI 生图页面”，而是让粉丝贡献、身份成长、故事共创、发行策略与链上收藏形成持续循环。

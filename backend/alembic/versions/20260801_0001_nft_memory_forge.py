@@ -154,23 +154,26 @@ def upgrade() -> None:
     for column in ("forge_attempt_id", "forge_session_id", "status"):
         op.create_index(f"ix_nft_generation_jobs_{column}", "nft_generation_jobs", [column])
 
-    op.add_column("nft_applications", sa.Column("forge_session_id", sa.String(), nullable=True))
-    op.create_foreign_key(
-        "fk_nft_applications_forge_session_id",
-        "nft_applications",
-        "nft_forge_sessions",
-        ["forge_session_id"],
-        ["id"],
-    )
-    op.create_index("ix_nft_applications_forge_session_id", "nft_applications", ["forge_session_id"])
-    op.create_unique_constraint("uq_nft_application_forge_session", "nft_applications", ["forge_session_id"])
+    # SQLite 不支持 ALTER TABLE 添加外键/唯一约束，batch_alter_table 在 SQLite
+    # 下通过重建表实现；PostgreSQL 仍执行直接 ALTER。
+    with op.batch_alter_table("nft_applications") as batch_op:
+        batch_op.add_column(sa.Column("forge_session_id", sa.String(), nullable=True))
+        batch_op.create_foreign_key(
+            "fk_nft_applications_forge_session_id",
+            "nft_forge_sessions",
+            ["forge_session_id"],
+            ["id"],
+        )
+        batch_op.create_index("ix_nft_applications_forge_session_id", ["forge_session_id"])
+        batch_op.create_unique_constraint("uq_nft_application_forge_session", ["forge_session_id"])
 
 
 def downgrade() -> None:
-    op.drop_constraint("uq_nft_application_forge_session", "nft_applications", type_="unique")
-    op.drop_index("ix_nft_applications_forge_session_id", table_name="nft_applications")
-    op.drop_constraint("fk_nft_applications_forge_session_id", "nft_applications", type_="foreignkey")
-    op.drop_column("nft_applications", "forge_session_id")
+    with op.batch_alter_table("nft_applications") as batch_op:
+        batch_op.drop_constraint("uq_nft_application_forge_session", type_="unique")
+        batch_op.drop_index("ix_nft_applications_forge_session_id")
+        batch_op.drop_constraint("fk_nft_applications_forge_session_id", type_="foreignkey")
+        batch_op.drop_column("forge_session_id")
     op.drop_table("nft_generation_jobs")
     op.drop_table("fragment_ledgers")
     op.drop_table("user_fragment_balances")

@@ -10,6 +10,9 @@ const nextConfig = {
     return config;
   },
   images: {
+    // 本地开发访问 Pinata IPFS 网关较慢时，服务端图片优化会超时 500；
+    // 设 NEXT_PUBLIC_IMAGE_UNOPTIMIZED=true 可让浏览器直接加载原图，绕过优化器。
+    unoptimized: process.env.NEXT_PUBLIC_IMAGE_UNOPTIMIZED === "true",
     remotePatterns: [
       {
         protocol: "https",

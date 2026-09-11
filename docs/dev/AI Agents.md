@@ -1,6 +1,6 @@
 # Fanora AI Agents
 
-> 更新日期：2026-07-23
+> 更新日期：2026-09-23
 > 代码目录：`backend/app/agents`
 > 适用基线：Fanora V1
 
