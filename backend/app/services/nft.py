@@ -481,6 +481,11 @@ class NftService:
         self, session: AsyncSession, identity: AuthenticatedIdentity, payload: NftApplicationCreate
     ) -> NftApplication:
         content, mime_type, width, height = await self._image_bytes_from_source(payload.image_data_url)
+        hosted_image = await cos_adapter.upload_bytes(
+            content=content,
+            mime_type=mime_type,
+            filename="fan-nft",
+        )
         story_image_urls = await cos_adapter.ensure_remote_urls(
             payload.story_image_urls, filename_prefix="fan-nft-story"
         )
@@ -496,7 +501,7 @@ class NftService:
             publish_fee_fan_tokens=settings.nft_publish_fee_fan_tokens,
             public_attributes=[item.model_dump() for item in payload.public_attributes],
             copyright_declaration=payload.copyright_declaration.strip(),
-            image_data=payload.image_data_url if len(payload.image_data_url) <= 2048 else None,
+            image_data=hosted_image.url,
             image_mime_type=mime_type,
             image_size_bytes=len(content),
             image_width=width,
