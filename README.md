@@ -2,7 +2,7 @@
 
 FANORA
 Fanora，让热爱成为身份，让故事成为作品。
-项目地址：<https://fanora-orpin.vercel.app>
+
 
 ## 项目介绍
 
@@ -38,7 +38,7 @@ Fanora 的核心理念：
 可以概括为：
 Web2 的简单体验 + AI 驱动的个性化创作 + Web3 带来的数字所有权与长期验证。
 
-[在线 Demo](https://fanora-orpin.vercel.app/) · [完整项目说明](docs/produce/README.md) · [系统架构](docs/produce/architecture.md) · [AI Agent 设计](docs/produce/ai_agent_design.md)
+[完整项目说明](docs/produce/README.md) · [系统架构](docs/produce/architecture.md) · [AI Agent 设计](docs/produce/ai_agent_design.md)
 
 ![Fanora 项目首页](docs/image.png)
 ![alt text](docs/image2.png)
