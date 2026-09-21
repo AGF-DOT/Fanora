@@ -1,0 +1,29 @@
+FROM python:3.13-slim
+
+WORKDIR /app
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl libpq-dev build-essential \
+    && pip install --no-cache-dir uv \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app/backend
+
+COPY backend/pyproject.toml backend/uv.lock ./
+RUN uv sync --frozen --all-extras --no-dev --no-install-project
+
+COPY backend/ .
+RUN uv sync --frozen --all-extras --no-dev \
+    && chmod +x /app/backend/scripts/docker-entrypoint.sh \
+    && useradd --create-home appuser \
+    && chown -R appuser:appuser /app
+
+USER appuser
+
+EXPOSE 8000
+ENTRYPOINT ["/app/backend/scripts/docker-entrypoint.sh"]
+CMD ["/app/backend/.venv/bin/uvicorn", "app.main:app", "--host", "0.0.0.0", "--timeout-keep-alive", "60"]
