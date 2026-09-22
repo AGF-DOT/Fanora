@@ -50,7 +50,7 @@ test("profile editing does not expose a separate avatar upload button", () => {
 });
 
 test("collection uses the Cyber Identity passport and asset tabs without loading the fan profile", () => {
-  assert.match(source, /https:\/\/fanora-1251127085\.cos\.ap-guangzhou\.myqcloud\.com\/bg\.mp4/);
+  assert.match(source, /https:\/\/fanora-1493413604\.cos\.ap-guangzhou\.myqcloud\.com\/bg\.mp4/);
   assert.match(source, /autoPlay muted loop playsInline preload="auto"/);
   assert.match(source, /onCanPlay=\{\(\) => void videoRef\.current\?\.play\(\)\}/);
   assert.match(source, /const backgroundLayers =/);
@@ -254,7 +254,7 @@ test("Gallery routes NFT creation to the stateful Agent studio", () => {
   assert.match(studioSource, /AI 五维评分和发行建议/);
   assert.match(studioSource, /TOOL TRACE/);
   assert.match(studioSource, />STATE</);
-  assert.match(studioSource, /https:\/\/fanora-1251127085\.cos\.ap-guangzhou\.myqcloud\.com\/bg\.mp4/);
+  assert.match(studioSource, /https:\/\/fanora-1493413604\.cos\.ap-guangzhou\.myqcloud\.com\/bg\.mp4/);
   assert.match(studioSource, /<NftVisualTemplateModal/);
   assert.match(studioSource, /onUpdated=\{\(template\) => setTemplates/);
   const loadStudioStateBlock = studioSource.slice(

@@ -36,7 +36,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "fanora-1251127085.cos.ap-guangzhou.myqcloud.com",
+        hostname: "fanora-1493413604.cos.ap-guangzhou.myqcloud.com",
       },
       {
         protocol: "https",

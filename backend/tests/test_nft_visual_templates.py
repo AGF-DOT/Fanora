@@ -45,7 +45,7 @@ async def test_template_update_keeps_private_templates_editable_and_rehosts_imag
 
     assert updated is not None
     assert updated.name == "新模板"
-    assert updated.preview_image_url.startswith("https://fanora-1251127085.cos.ap-guangzhou.myqcloud.com/")
+    assert updated.preview_image_url.startswith("https://fanora-1493413604.cos.ap-guangzhou.myqcloud.com/")
     assert updated.reference_image_urls == [updated.preview_image_url]
 
 

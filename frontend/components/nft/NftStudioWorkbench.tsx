@@ -651,7 +651,7 @@ export default function NftStudioWorkbench() {
 
   return (
     <main className={styles.stage}>
-      <video ref={videoRef} className={styles.videoBackground} autoPlay muted loop playsInline preload="auto" aria-hidden="true" onCanPlay={() => void videoRef.current?.play()} onEnded={() => { if (videoRef.current) { videoRef.current.currentTime = 0; void videoRef.current.play(); } }}><source src="https://fanora-1251127085.cos.ap-guangzhou.myqcloud.com/bg.mp4" type="video/mp4" /></video>
+      <video ref={videoRef} className={styles.videoBackground} autoPlay muted loop playsInline preload="auto" aria-hidden="true" onCanPlay={() => void videoRef.current?.play()} onEnded={() => { if (videoRef.current) { videoRef.current.currentTime = 0; void videoRef.current.play(); } }}><source src="https://fanora-1493413604.cos.ap-guangzhou.myqcloud.com/bg.mp4" type="video/mp4" /></video>
       <div className={styles.videoOverlay} aria-hidden="true" />
       <div className={styles.grid} aria-hidden="true" />
       <div className={styles.scanlines} aria-hidden="true" />

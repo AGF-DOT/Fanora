@@ -94,7 +94,7 @@ class Settings(BaseSettings):
     pinata_gateway_url: str = "https://gateway.pinata.cloud/ipfs"
     pinata_timeout_seconds: float = 30.0
     pinata_max_retries: int = 3
-    cos_bucket: str = "fanora-1251127085"
+    cos_bucket: str = "fanora-1493413604"
     cos_region: str = "ap-guangzhou"
     cos_secret_id: str = ""
     cos_secret_key: str = ""

@@ -91,7 +91,7 @@ async def test_create_application_rehosts_remote_image_on_cos(monkeypatch) -> No
 
     async def upload_bytes(*, content: bytes, mime_type: str, filename: str):
         uploaded.append((content, mime_type, filename))
-        return CosUpload(url="https://fanora-1251127085.cos.ap-guangzhou.myqcloud.com/fan-nft.png", raw={})
+        return CosUpload(url="https://fanora-1493413604.cos.ap-guangzhou.myqcloud.com/fan-nft.png", raw={})
 
     async def reject_passthrough(*args, **kwargs):
         del args, kwargs
@@ -133,7 +133,7 @@ async def test_create_application_rehosts_remote_image_on_cos(monkeypatch) -> No
         ),
     )
 
-    assert application.image_data == "https://fanora-1251127085.cos.ap-guangzhou.myqcloud.com/fan-nft.png"
+    assert application.image_data == "https://fanora-1493413604.cos.ap-guangzhou.myqcloud.com/fan-nft.png"
     assert uploaded == [(png_content, "image/png", "fan-nft")]
 
 

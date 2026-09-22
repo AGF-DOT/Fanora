@@ -87,20 +87,20 @@ async def seed_test_community_content() -> None:
 def stub_cos_uploads(monkeypatch):
     async def upload_bytes(*, content: bytes, mime_type: str, filename: str = "fanora-image") -> CosUpload:
         del content, mime_type
-        return CosUpload(url=f"https://fanora-1251127085.cos.ap-guangzhou.myqcloud.com/{filename}.png", raw={"data": {"public_url": filename}})
+        return CosUpload(url=f"https://fanora-1493413604.cos.ap-guangzhou.myqcloud.com/{filename}.png", raw={"data": {"public_url": filename}})
 
     async def upload_data_url(value: str, *, filename: str = "fanora-image") -> str:
         del value
-        return f"https://fanora-1251127085.cos.ap-guangzhou.myqcloud.com/{filename}.png"
+        return f"https://fanora-1493413604.cos.ap-guangzhou.myqcloud.com/{filename}.png"
 
     async def ensure_remote_url(value: str | None, *, filename: str = "fanora-image") -> str | None:
         if value and value.startswith("data:image/"):
-            return f"https://fanora-1251127085.cos.ap-guangzhou.myqcloud.com/{filename}.png"
+            return f"https://fanora-1493413604.cos.ap-guangzhou.myqcloud.com/{filename}.png"
         return value
 
     async def ensure_remote_urls(values: list[str], *, filename_prefix: str = "fanora-image") -> list[str]:
         return [
-            f"https://fanora-1251127085.cos.ap-guangzhou.myqcloud.com/{filename_prefix}-{index + 1}.png" if value.startswith("data:image/") else value
+            f"https://fanora-1493413604.cos.ap-guangzhou.myqcloud.com/{filename_prefix}-{index + 1}.png" if value.startswith("data:image/") else value
             for index, value in enumerate(values)
         ]
 
